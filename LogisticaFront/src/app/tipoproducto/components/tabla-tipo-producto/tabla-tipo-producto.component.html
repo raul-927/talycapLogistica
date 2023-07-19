@@ -1,0 +1,56 @@
+
+<table class="table table-hover table-bordered well well-sm">
+  <caption><h1>Tipos de Productos</h1></caption>
+    <thead>
+      <td>id</td>
+      <td>Tipos de Productos</td>
+
+      <td>Editar</td>
+      <td>Guardar</td>
+      <td>Eliminar</td>
+    </thead>
+  <tbody>
+    <tr *ngFor="let item of tipoProductos, let i=index">
+
+      <td>
+        <h4>{{item.tipoProductoId}}</h4>
+      </td>
+
+      <td>
+        <input
+            class="form-control"
+            id   ="nombreTipoProducto_{{item.tipoProductoId}}"
+            name ="nombreTipoProducto_{{item.tipoProductoId}}"
+            [value]="item.nombreTipoProducto"
+            disabled [selected]="true">
+      </td>
+
+      <td>
+        <input
+                type        ="image"
+                [disabled]  ="!habilitoLapiz"
+                (click)     ="habilitoCampos(item.tipoProductoId)"
+                src         ="/assets/glyph-iconset-master/svg/si-glyph-pencil.svg"
+                id          ="pencil_{{item.tipoProductoId}}"
+        />
+      </td>
+
+      <td>
+        <input  type      ="image"
+                disabled  ="true"
+                (click)   ="actualizoTipoProducto(item)"
+                src       ="/assets/glyph-iconset-master/svg/si-glyph-floppy-disk.svg"
+                id        ="floppy_{{item.tipoProductoId}}"
+        />
+      </td>
+
+      <td>
+        <input  type    ="image"
+                (click) ="eliminoRegistro(item.tipoProductoId)"
+                src     ="/assets/glyph-iconset-master/svg/si-glyph-delete.svg"
+                id      ="delete_{{item.tipoProductoId}}"
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>

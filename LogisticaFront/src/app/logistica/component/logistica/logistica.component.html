@@ -1,0 +1,83 @@
+<h3>Crear Nueva Logistica</h3>
+<form class="form"
+   [formGroup] ="logisticaFormGroup"
+   (ngSubmit)  ="insertPuerto(logisticaFormGroup.value)">
+
+  <div class    ="form-group">
+    <label for ="tipoProducto">Tipo de Producto:</label>
+    <select
+      [(ngModel)]="defaultValue"
+        class="form-control"
+        id="tipoProducto"
+        [formControl]="logisticaFormGroup.controls['tipoProducto']">
+        <option class="dropdown-item" disabled [selected]="true" [ngValue]="defaultValue">{{defaultValue}}</option>
+        <option
+          *ngFor="let name of optionsEnumTipoLogistica; let i = index"
+          [ngValue]="name">
+            {{name}}
+        </option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="precioEnvio">Precio de envío:</label>
+    <input  id   ="precioEnvio"
+            name ="precioEnvio"
+            [formControl]="logisticaFormGroup.controls['precioEnvio']">
+  </div>
+
+  <div class="form-group">
+    <label for="cantidadProducto">Cantidad de Producto:</label>
+    <input  id   ="cantidadProducto"
+            name ="cantidadProducto"
+            [formControl]="logisticaFormGroup.controls['cantidadProducto']">
+  </div>
+
+  <div class="form-group">
+    <label for="subTotal">Sub Total:</label>
+    <input  id   ="subTotal"
+            name ="subTotal"
+            [formControl]="logisticaFormGroup.controls['subTotal']">
+  </div>
+
+
+
+
+
+  <div class="form-group">
+    <label for="subTotal">Sub Total:</label>
+    <input  id   ="subTotal"
+            name ="subTotal"
+            [formControl]="logisticaFormGroup.controls['subTotal']">
+  </div>
+
+
+
+  <div class    ="form-group">
+    <label for ="ubicacion">Tipo de Logistica:</label>
+    <select
+      [(ngModel)]="defaultValue"
+        class="form-control"
+        id="ubicacion"
+        [formControl]="logisticaFormGroup.controls['tipoLogistica']">
+        <option class="dropdown-item" disabled [selected]="true" [ngValue]="defaultValue">{{defaultValue}}</option>
+        <option
+          *ngFor="let name of optionsEnumTipoLogistica; let i = index"
+          [ngValue]="name">
+            {{name}}
+        </option>
+    </select>
+  </div>
+
+
+  <div class="botonForm">
+    <button type="submit"
+    class="btn btn-primary">
+    Guardar
+  </button>
+
+  </div>
+</form>
+<app-tabla-puerto
+ [cambio]="cambio">
+</app-tabla-puerto>

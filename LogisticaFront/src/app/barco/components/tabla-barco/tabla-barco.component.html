@@ -1,0 +1,67 @@
+
+<table class="table table-hover table-bordered well well-sm">
+  <caption><h1>Barcos</h1></caption>
+    <thead>
+      <td>id</td>
+      <td>Numero de Flota</td>
+      <td>Nombre de barco</td>
+
+      <td>Editar</td>
+      <td>Guardar</td>
+      <td>Eliminar</td>
+    </thead>
+  <tbody>
+    <tr *ngFor="let item of barcos, let i=index">
+
+      <td>
+        <h4>{{item.barcoId}}</h4>
+      </td>
+
+      <td>
+        <input
+            class="form-control"
+            id   ="nroFlota_{{item.barcoId}}"
+            name ="nroFlota_{{item.barcoId}}"
+            [value]="item.nroFlota"
+            disabled [selected]="true">
+      </td>
+
+
+      <td>
+        <input
+            class="form-control"
+            id   ="nombreBarco_{{item.barcoId}}"
+            name ="nombreBarco_{{item.barcoId}}"
+            [value]="item.nombreBarco"
+            disabled [selected]="true">
+      </td>
+
+      <td>
+        <input
+                type        ="image"
+                [disabled]  ="!habilitoLapiz"
+                (click)     ="habilitoCampos(item.barcoId)"
+                src         ="/assets/glyph-iconset-master/svg/si-glyph-pencil.svg"
+                id          ="pencil_{{item.barcoId}}"
+        />
+      </td>
+
+      <td>
+        <input  type      ="image"
+                disabled  ="true"
+                (click)   ="actualizoBarco(item)"
+                src       ="/assets/glyph-iconset-master/svg/si-glyph-floppy-disk.svg"
+                id        ="floppy_{{item.barcoId}}"
+        />
+      </td>
+
+      <td>
+        <input  type    ="image"
+                (click) ="eliminoRegistro(item.barcoId)"
+                src     ="/assets/glyph-iconset-master/svg/si-glyph-delete.svg"
+                id      ="delete_{{item.barcoId}}"
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>

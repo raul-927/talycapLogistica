@@ -1,0 +1,38 @@
+<h3>Crear Nuevo Camion</h3>
+<form class="form"
+   [formGroup] ="camionFormGroup"
+   (ngSubmit)  ="insertCamion(camionFormGroup.value)">
+
+
+   <div class="form-group">
+    <label for="placa">Placa:</label>
+    <input  id   ="placa"
+            name ="placa"
+            [formControl]="camionFormGroup.controls['placa']">
+  </div>
+
+  <div class="form-group">
+    <label for="marca">Marca:</label>
+    <input  id   ="marca"
+            name ="marca"
+            [formControl]="camionFormGroup.controls['marca']">
+  </div>
+
+  <div class="form-group">
+    <label for="modelo">Modelo:</label>
+    <input  id   ="modelo"
+            name ="modelo"
+            [formControl]="camionFormGroup.controls['modelo']">
+  </div>
+
+  <div class="botonForm">
+    <button type="submit"
+    class="btn btn-primary">
+    Guardar
+  </button>
+
+  </div>
+</form>
+<app-tabla-camion
+ [cambio]="cambio">
+</app-tabla-camion>

@@ -1,0 +1,77 @@
+
+<table class="table table-hover table-bordered well well-sm">
+  <caption><h1>Clientes</h1></caption>
+    <thead>
+      <td>id</td>
+      <td>Nombre</td>
+      <td>Apellido</td>
+      <td>Documento</td>
+
+      <td>Editar</td>
+      <td>Guardar</td>
+      <td>Eliminar</td>
+    </thead>
+  <tbody>
+    <tr *ngFor="let item of clientes, let i=index">
+
+      <td>
+        <h4>{{item.clienteId}}</h4>
+      </td>
+
+      <td>
+        <input
+            class="form-control"
+            id   ="nombre_{{item.clienteId}}"
+            name ="nombre_{{item.clienteId}}"
+            [value]="item.nombre"
+            disabled [selected]="true">
+      </td>
+
+      <td>
+        <input
+            class="form-control"
+            id   ="apellido_{{item.clienteId}}"
+            name ="apellido_{{item.clienteId}}"
+            [value]="item.apellido"
+            disabled [selected]="true">
+      </td>
+
+      <td>
+        <input
+            class="form-control"
+            id   ="documento_{{item.clienteId}}"
+            name ="documento_{{item.clienteId}}"
+            [value]="item.documento"
+            disabled [selected]="true">
+      </td>
+
+
+      <td>
+        <input
+                type        ="image"
+                [disabled]  ="!habilitoLapiz"
+                (click)     ="habilitoCampos(item.clienteId)"
+                src         ="/assets/glyph-iconset-master/svg/si-glyph-pencil.svg"
+                id          ="pencil_{{item.clienteId}}"
+        />
+      </td>
+
+      <td>
+        <input  type      ="image"
+                disabled  ="true"
+                (click)   ="actualizoCliente(item)"
+                src       ="/assets/glyph-iconset-master/svg/si-glyph-floppy-disk.svg"
+                id        ="floppy_{{item.clienteId}}"
+        />
+      </td>
+
+      <td>
+        <input  type    ="image"
+                (click) ="eliminoRegistro(item.clienteId)"
+                src     ="/assets/glyph-iconset-master/svg/si-glyph-delete.svg"
+                id      ="delete_{{item.clienteId}}"
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>

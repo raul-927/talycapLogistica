@@ -1,0 +1,41 @@
+<h3>Crear Nuevo Puerto</h3>
+<form class="form"
+   [formGroup] ="puertoFormGroup"
+   (ngSubmit)  ="insertPuerto(puertoFormGroup.value)">
+
+
+   <div class="form-group">
+    <label for="descripcion">Descripcion:</label>
+    <input  id   ="descripcion"
+            name ="descripcion"
+            [formControl]="puertoFormGroup.controls['descripcion']">
+  </div>
+
+
+  <div class    ="form-group">
+    <label for ="ubicacion">Ubicacion:</label>
+    <select
+      [(ngModel)]="defaultValue"
+        class="form-control"
+        id="ubicacion"
+        [formControl]="puertoFormGroup.controls['ubicacion']">
+        <option class="dropdown-item" disabled [selected]="true" [ngValue]="defaultValue">{{defaultValue}}</option>
+        <option
+          *ngFor="let name of optionsEnumUbicacion; let i = index"
+          [ngValue]="name">
+            {{name}}
+        </option>
+    </select>
+  </div>
+
+  <div class="botonForm">
+    <button type="submit"
+    class="btn btn-primary">
+    Guardar
+  </button>
+
+  </div>
+</form>
+<app-tabla-puerto
+ [cambio]="cambio">
+</app-tabla-puerto>

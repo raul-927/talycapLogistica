@@ -1,0 +1,56 @@
+
+<table class="table table-hover table-bordered well well-sm">
+  <caption><h1>Bodegas</h1></caption>
+    <thead>
+      <td>id</td>
+      <td>Nomdbre de Bodega</td>
+
+      <td>Editar</td>
+      <td>Guardar</td>
+      <td>Eliminar</td>
+    </thead>
+  <tbody>
+    <tr *ngFor="let item of bodegas, let i=index">
+
+      <td>
+        <h4>{{item.barcoId}}</h4>
+      </td>
+
+      <td>
+        <input
+            class="form-control"
+            id   ="nombreBodega_{{item.bodegaId}}"
+            name ="nombreBodega_{{item.bodegaId}}"
+            [value]="item.nombreBodega"
+            disabled [selected]="true">
+      </td>
+
+      <td>
+        <input
+                type        ="image"
+                [disabled]  ="!habilitoLapiz"
+                (click)     ="habilitoCampos(item.bodegaId)"
+                src         ="/assets/glyph-iconset-master/svg/si-glyph-pencil.svg"
+                id          ="pencil_{{item.bodegaId}}"
+        />
+      </td>
+
+      <td>
+        <input  type      ="image"
+                disabled  ="true"
+                (click)   ="actualizoBodega(item)"
+                src       ="/assets/glyph-iconset-master/svg/si-glyph-floppy-disk.svg"
+                id        ="floppy_{{item.bodegaId}}"
+        />
+      </td>
+
+      <td>
+        <input  type    ="image"
+                (click) ="eliminoRegistro(item.bodegaId)"
+                src     ="/assets/glyph-iconset-master/svg/si-glyph-delete.svg"
+                id      ="delete_{{item.bodegaId}}"
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,4 @@
+export enum UbicacionEnum{
+  NACIONAL = 'NACIONAL',
+	INTERNACIONAL = 'INTERNACIONAL'
+}

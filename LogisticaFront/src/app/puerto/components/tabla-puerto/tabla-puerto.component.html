@@ -1,0 +1,69 @@
+<table class="table table-hover table-bordered well well-sm">
+  <caption><h1>Puertos</h1></caption>
+    <thead>
+      <td>id</td>
+      <td>Descripcion</td>
+      <td>Ubicacion</td>
+
+      <td>Editar</td>
+      <td>Guardar</td>
+      <td>Eliminar</td>
+    </thead>
+  <tbody>
+    <tr *ngFor="let item of puertos, let i=index">
+
+      <td>
+        <h4>{{item.puertoId}}</h4>
+      </td>
+
+      <td>
+        <input
+            class="form-control"
+            id   ="descripcion_{{item.puertoId}}"
+            name ="descripcion_{{item.puertoId}}"
+            [value]="item.descripcion"
+            disabled [selected]="true">
+      </td>
+
+      <td>
+        <select
+          class="form-control"
+          id   ="ubicacion_{{item.puertoId}}"
+          name ="ubicacion_{{item.puertoId}}"
+          [disabled]="isClicked">
+          <option class="dropdown-item" disabled [selected]="true" [ngValue]="name">{{item.ubicacion}}</option>
+          <option *ngFor="let name of optionsEnumUbicacion; let i = index" value = "{{name}}"[value]="name">
+              {{name}}
+          </option>
+        </select>
+      </td>
+
+      <td>
+        <input
+                type        ="image"
+                [disabled]  ="!habilitoLapiz"
+                (click)     ="habilitoCampos(item.puertoId)"
+                src         ="/assets/glyph-iconset-master/svg/si-glyph-pencil.svg"
+                id          ="pencil_{{item.puertoId}}"
+        />
+      </td>
+
+      <td>
+        <input  type      ="image"
+                disabled  ="true"
+                (click)   ="actualizoPuerto(item)"
+                src       ="/assets/glyph-iconset-master/svg/si-glyph-floppy-disk.svg"
+                id        ="floppy_{{item.puertoId}}"
+        />
+      </td>
+
+      <td>
+        <input  type    ="image"
+                (click) ="eliminoRegistro(item.puertoId)"
+                src     ="/assets/glyph-iconset-master/svg/si-glyph-delete.svg"
+                id      ="delete_{{item.puertoId}}"
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>

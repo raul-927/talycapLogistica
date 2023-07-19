@@ -1,0 +1,24 @@
+<h3>Crear Nueva Bodega</h3>
+<form class="form"
+   [formGroup] ="bodegaFormGroup"
+   (ngSubmit)  ="insertBodega(bodegaFormGroup.value)">
+
+
+   <div class="form-group">
+    <label for="nombreBodega">Nombre de Bodega:</label>
+    <input  id   ="nombreBodega"
+            name ="nombreBodega"
+            [formControl]="bodegaFormGroup.controls['nombreBodega']">
+  </div>
+
+  <div class="botonForm">
+    <button type="submit"
+    class="btn btn-primary">
+    Guardar
+  </button>
+
+  </div>
+</form>
+<app-tabla-bodega
+ [cambio]="cambio">
+</app-tabla-bodega>

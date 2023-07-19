@@ -1,0 +1,24 @@
+<h3>Crear Nuevo Tipo de producto</h3>
+<form class="form"
+   [formGroup] ="productoFormGroup"
+   (ngSubmit)  ="insertTipoProducto(productoFormGroup.value)">
+
+
+   <div class="form-group">
+    <label for="nombreTipoProducto">Nombre de tipo de Producto:</label>
+    <input  id   ="nombreTipoProducto"
+            name ="nombreTipoProducto"
+            [formControl]="productoFormGroup.controls['nombreTipoProducto']">
+  </div>
+
+  <div class="botonForm">
+    <button type="submit"
+    class="btn btn-primary">
+    Guardar
+  </button>
+
+  </div>
+</form>
+<app-tabla-tipo-producto
+ [cambio]="cambio">
+</app-tabla-tipo-producto>

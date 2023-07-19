@@ -1,0 +1,77 @@
+
+<table class="table table-hover table-bordered well well-sm">
+  <caption><h1>Camiones</h1></caption>
+    <thead>
+      <td>id</td>
+      <td>placa</td>
+      <td>marca</td>
+      <td>modelo</td>
+
+      <td>Editar</td>
+      <td>Guardar</td>
+      <td>Eliminar</td>
+    </thead>
+  <tbody>
+    <tr *ngFor="let item of camiones, let i=index">
+
+      <td>
+        <h4>{{item.camionId}}</h4>
+      </td>
+
+      <td>
+        <input
+            class="form-control"
+            id   ="placa_{{item.camionId}}"
+            name ="placa_{{item.barcoId}}"
+            [value]="item.placa"
+            disabled [selected]="true">
+      </td>
+
+
+      <td>
+        <input
+            class="form-control"
+            id   ="marca_{{item.camionId}}"
+            name ="marca_{{item.camionId}}"
+            [value]="item.marca"
+            disabled [selected]="true">
+      </td>
+
+      <td>
+        <input
+            class="form-control"
+            id   ="modelo_{{item.camionId}}"
+            name ="modelo_{{item.camionId}}"
+            [value]="item.modelo"
+            disabled [selected]="true">
+      </td>
+
+      <td>
+        <input
+                type        ="image"
+                [disabled]  ="!habilitoLapiz"
+                (click)     ="habilitoCampos(item.camionId)"
+                src         ="/assets/glyph-iconset-master/svg/si-glyph-pencil.svg"
+                id          ="pencil_{{item.camionId}}"
+        />
+      </td>
+
+      <td>
+        <input  type      ="image"
+                disabled  ="true"
+                (click)   ="actualizoCamion(item)"
+                src       ="/assets/glyph-iconset-master/svg/si-glyph-floppy-disk.svg"
+                id        ="floppy_{{item.camionId}}"
+        />
+      </td>
+
+      <td>
+        <input  type    ="image"
+                (click) ="eliminoRegistro(item.camionId)"
+                src     ="/assets/glyph-iconset-master/svg/si-glyph-delete.svg"
+                id      ="delete_{{item.camionId}}"
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
