@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.talycap.gestion.infrastructure.repository.mybatis.mappers.LogisticaMapper">
+	<resultMap type="com.talycap.gestion.infrastructure.entitys.LogisticaEntity" id="LogisticaResult">
+  	
+  		<id		property 	="logisticaId" 			column ="logistica_id"/>
+  		<result property 	="precioEnvio" 			column ="precio_envio"/>
+ 		<result property 	="cantidadProducto" 	column ="cantidad_producto"/>
+ 		<result property 	="subTotal" 			column ="sub_total"/>
+ 		<result property 	="porcentajeDescuento" 	column ="porcentaje_descuento"/>
+ 		<result property 	="total" 				column ="total"/>
+ 		<result property 	="fechaRegistro" 		column ="fecha_registro"/>
+ 		<result property 	="fechaEntrega" 		column ="fecha_entrega"/>
+ 		
+ 		<association property ="tipoProducto" 
+			resultMap="com.talycap.gestion.infrastructure.repository.mybatis.mappers.TipoProductoMapper.TipoProductoResult"/>
+			
+		<association property ="cliente" 
+			resultMap="com.talycap.gestion.infrastructure.repository.mybatis.mappers.ClienteMapper.ClienteResult"/>
+			
+		<association property ="logisticaTerrestre" 
+			resultMap="com.talycap.gestion.infrastructure.repository.mybatis.mappers.LogisticaTerrestreMapper.LogisticaTerrestreResult"/>
+			
+		<association property ="logisticaMaritima" 
+			resultMap="com.talycap.gestion.infrastructure.repository.mybatis.mappers.LogisticaMaritimaMapper.LogisticaMaritimaResult"/>
+			
+  	</resultMap>
+</mapper>

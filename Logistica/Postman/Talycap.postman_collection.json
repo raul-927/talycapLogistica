@@ -1,0 +1,627 @@
+{
+	"info": {
+		"_postman_id": "f0cbf0e9-1406-42b3-b457-942307b7ae73",
+		"name": "Talycap",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9712537"
+	},
+	"item": [
+		{
+			"name": "Barco",
+			"item": [
+				{
+					"name": "selectBarco",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODk3Mjc1ODUsInVzZXJfbmFtZSI6InJhdWwiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6Ijc5ZGFiZmFmLWU2ZmYtNGI2Ni1iNWQyLTA3YmY1YWQxNTEyNyIsImNsaWVudF9pZCI6ImNsaWVudCIsInNjb3BlIjpbInJlYWQiXX0.3h-15AnjsronNoQaidAstcRDTwxe1PCaLvwARlANJic",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/barcos/select",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"barcos",
+								"select"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createBarco",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODk2NTQxNDIsInVzZXJfbmFtZSI6InJhdWwiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6ImQzYzliZWUwLThiOWEtNGRlNi1hMTEzLTUzYzEyNzBhZmRlNCIsImNsaWVudF9pZCI6ImNsaWVudCIsInNjb3BlIjpbInJlYWQiXX0.9rIsXg-c0byYi3DQ7PMDBsck3D3-8Wy8GPbe334-DsE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nroFlota\": \"ACC1234A\",\n    \"nombreBarco\": \"Capitan Miranda2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/barcos",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"barcos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteBarco",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODk3NTIzODksInVzZXJfbmFtZSI6InJhdWwiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6IjQ5YzY1ZDE5LTIxZDgtNDcyNi04ODgxLTQ2ZDYyMGVlMzY2ZiIsImNsaWVudF9pZCI6ImNsaWVudCIsInNjb3BlIjpbInJlYWQiXX0.QHvdVLSxB3iMYsnfC8WfIcxdy8daNaEpCyIBq7GEGu8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "body",
+								"value": "5",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nroFlota\": \"ACC1234A\",\n    \"nombreBarco\": \"Capitan Miranda2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/barcos",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"barcos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AuthServer",
+			"item": [
+				{
+					"name": "RAUL ROLE_ADMIN",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "secret",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "client",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_AUTHORIZATION_SERVER}}/oauth/token?grant_type=password&username=raul&password=12345",
+							"host": [
+								"{{HOST_AUTHORIZATION_SERVER}}"
+							],
+							"path": [
+								"oauth",
+								"token"
+							],
+							"query": [
+								{
+									"key": "grant_type",
+									"value": "password"
+								},
+								{
+									"key": "username",
+									"value": "raul"
+								},
+								{
+									"key": "password",
+									"value": "12345"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Puerto",
+			"item": [
+				{
+					"name": "createPuerto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODk2NTQxNDIsInVzZXJfbmFtZSI6InJhdWwiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6ImQzYzliZWUwLThiOWEtNGRlNi1hMTEzLTUzYzEyNzBhZmRlNCIsImNsaWVudF9pZCI6ImNsaWVudCIsInNjb3BlIjpbInJlYWQiXX0.9rIsXg-c0byYi3DQ7PMDBsck3D3-8Wy8GPbe334-DsE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"descripcion\": \"Puerto Barranquilla\",\n    \"ubicacion\": \"NACIONAL\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/puertos",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"puertos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "createCliente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODk3NTUwMTksInVzZXJfbmFtZSI6InJhdWwiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6ImY2MGRjODhmLWExOTgtNGJiZC05YjRhLThmNTY2MWRmZDVjMiIsImNsaWVudF9pZCI6ImNsaWVudCIsInNjb3BlIjpbInJlYWQiXX0.m4yOU11uCPeAYuMk6oxOToQ31XYDjUEM1ayHQKqc18U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Raul\",\n    \"apellido\": \"Hernandez\",\n    \"documento\": \"14521\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/clientes",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "selectCliente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODk3NTUxMTksInVzZXJfbmFtZSI6InJhdWwiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6IjBhOTJmMWIyLTJjZDQtNDRjZi05ZGNlLTk5NDI4ODc3MWYyMSIsImNsaWVudF9pZCI6ImNsaWVudCIsInNjb3BlIjpbInJlYWQiXX0.rrH58rluv-4tcsvga353c3btFPB43fObCp3zjNWnfj4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/clientes/select",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"clientes",
+								"select"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TipoProducto",
+			"item": [
+				{
+					"name": "createTipoProducto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODk2NTQxNDIsInVzZXJfbmFtZSI6InJhdWwiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6ImQzYzliZWUwLThiOWEtNGRlNi1hMTEzLTUzYzEyNzBhZmRlNCIsImNsaWVudF9pZCI6ImNsaWVudCIsInNjb3BlIjpbInJlYWQiXX0.9rIsXg-c0byYi3DQ7PMDBsck3D3-8Wy8GPbe334-DsE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombreTipoProducto\":\"Producto metalico\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/tiposProductos",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"tiposProductos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "selectTipoProducto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODk4MjUyMTMsInVzZXJfbmFtZSI6InJhdWwiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6IjdlZTRmZDY1LTk0MWItNDJlOS1iM2U1LTdhMjg5YTgzODU2ZCIsImNsaWVudF9pZCI6ImNsaWVudCIsInNjb3BlIjpbInJlYWQiXX0.Bc3389WSCTPrCh8TEl0tC1R373uzgm8yKO9hg7uOa_g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/tiposProductos/select",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"tiposProductos",
+								"select"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Logistica",
+			"item": [
+				{
+					"name": "createLogistica",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODk2NTQxNDIsInVzZXJfbmFtZSI6InJhdWwiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6ImQzYzliZWUwLThiOWEtNGRlNi1hMTEzLTUzYzEyNzBhZmRlNCIsImNsaWVudF9pZCI6ImNsaWVudCIsInNjb3BlIjpbInJlYWQiXX0.9rIsXg-c0byYi3DQ7PMDBsck3D3-8Wy8GPbe334-DsE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tipoProducto\":{\n        \"tipoProductoId\":1\n    },\n    \"precioEnvio\": 8000,\n    \"cantidadProducto\": 11,\n    \"subTotal\": 88000,\n    \"porcentajeDescuento\":5,\n    \"total\": 85360,\n    \"cliente\":{\n        \"clienteId\":1\n    },\n    \"logisticaTerrestre\":{\n       \"camion\":{\n           \"camionId\":1\n       },\n       \"bodega\":{\n           \"bodegaId\":1\n       }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/logisticas",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"logisticas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "selectLogistica",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODk2NTQxNDIsInVzZXJfbmFtZSI6InJhdWwiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6ImQzYzliZWUwLThiOWEtNGRlNi1hMTEzLTUzYzEyNzBhZmRlNCIsImNsaWVudF9pZCI6ImNsaWVudCIsInNjb3BlIjpbInJlYWQiXX0.9rIsXg-c0byYi3DQ7PMDBsck3D3-8Wy8GPbe334-DsE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"logisticaTerrestre\":{\n        \"logisticaTerrestreId\":1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/logisticas/select",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"logisticas",
+								"select"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Camion",
+			"item": [
+				{
+					"name": "createCamion",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODk3NjQ4MDQsInVzZXJfbmFtZSI6InJhdWwiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6IjRkMjlkODkwLTFjYmItNDFmNi1hODY2LThiMWRlNjgyYTA0YSIsImNsaWVudF9pZCI6ImNsaWVudCIsInNjb3BlIjpbInJlYWQiXX0.iy5ZqZi5Bxnb6f6aNMLvYxcJX3TVTVHFNaqlllFwekg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"placa\": \"ABC123\",\n    \"marca\": \"JAC\",\n    \"modelo\":\"2024\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/camiones",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"camiones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "selectCamion",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODk3NjQ4MDQsInVzZXJfbmFtZSI6InJhdWwiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6IjRkMjlkODkwLTFjYmItNDFmNi1hODY2LThiMWRlNjgyYTA0YSIsImNsaWVudF9pZCI6ImNsaWVudCIsInNjb3BlIjpbInJlYWQiXX0.iy5ZqZi5Bxnb6f6aNMLvYxcJX3TVTVHFNaqlllFwekg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/camiones/select",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"camiones",
+								"select"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bodegas",
+			"item": [
+				{
+					"name": "createBodega",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODk2NTQxNDIsInVzZXJfbmFtZSI6InJhdWwiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6ImQzYzliZWUwLThiOWEtNGRlNi1hMTEzLTUzYzEyNzBhZmRlNCIsImNsaWVudF9pZCI6ImNsaWVudCIsInNjb3BlIjpbInJlYWQiXX0.9rIsXg-c0byYi3DQ7PMDBsck3D3-8Wy8GPbe334-DsE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n     \"nombreBodega\":\"Bodega Zona Franca\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/bodegas",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"bodegas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "selectBodega",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODk2NTQxNDIsInVzZXJfbmFtZSI6InJhdWwiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6ImQzYzliZWUwLThiOWEtNGRlNi1hMTEzLTUzYzEyNzBhZmRlNCIsImNsaWVudF9pZCI6ImNsaWVudCIsInNjb3BlIjpbInJlYWQiXX0.9rIsXg-c0byYi3DQ7PMDBsck3D3-8Wy8GPbe334-DsE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/bodegas/select",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"bodegas",
+								"select"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.talycap.gestion.infrastructure.repository.mybatis.mappers.LogisticaMaritimaMapper">
+	<resultMap type="com.talycap.gestion.infrastructure.entitys.LogisticaMaritimaEntity" id="LogisticaMaritimaResult">
+  	
+  		<id		property 	= "logisticaMaritimaId" 	column = "logistica_maritima_id"/>
+ 		
+ 		<association property ="barco" 
+			resultMap="com.talycap.gestion.infrastructure.repository.mybatis.mappers.BarcoMapper.BarcoResult"/>
+			
+		<association property ="puerto" 
+			resultMap="com.talycap.gestion.infrastructure.repository.mybatis.mappers.PuertoMapper.PuertoResult"/>
+			
+  	</resultMap>
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.talycap.gestion.infrastructure.repository.mybatis.mappers.LogisticaTerrestreMapper">
+	<resultMap type="com.talycap.gestion.infrastructure.entitys.LogisticaTerrestreEntity" id="LogisticaTerrestreResult">
+  	
+  		<id		property 	= "logisticaTerrestreId" 	column = "logistica_terrestre_id"/>
+  		
+ 		<association property ="camion" 
+			resultMap="com.talycap.gestion.infrastructure.repository.mybatis.mappers.CamionMapper.CamionResult"/>
+			
+		<association property ="bodega" 
+			resultMap="com.talycap.gestion.infrastructure.repository.mybatis.mappers.BodegaMapper.BodegaResult"/>
+			
+  	</resultMap>
+</mapper>

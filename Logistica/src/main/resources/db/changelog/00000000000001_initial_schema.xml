@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+        <property name="autoIncrement" value="true"/>
+        
+    <changeSet id="00000000000001" author="rhernandez">
+        
+        <createTable tableName="barco">
+            <column name="barco_id" 	type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="nro_flota" 	type="varchar(8)"/>
+            <column name="nombre_barco" 	type="varchar(25)"/>
+        </createTable>
+        
+        <createTable tableName="bodega">
+            <column name="bodega_id" 	type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="nombre_bodega" 		type="varchar(255)"/>
+        </createTable>
+        
+        <createTable tableName="camion">
+            <column name="camion_id" 	type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="placa" 	type="varchar(6)"/>
+            <column name="modelo" 	type="varchar(20)"/>
+            <column name="marca" 	type="varchar(20)"/>
+        </createTable>
+        
+        <createTable tableName="cliente">
+            <column name="cliente_id" 	type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="nombre" 	 	 type="varchar(255)"/>
+            <column name="apellido" 	 type="varchar(255)"/>
+            <column name="documento" 	 type="varchar(255)"/>
+        </createTable>
+        
+        <createTable tableName="logistica">
+            <column name="logistica_id" 	type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            
+             <column name="precio_envio" 		  type="bigint"/>
+            <column name="cantidad_producto" 	  type="int"/>
+            <column name="sub_total" 			  type="bigint"/>
+            <column name="porcentaje_descuento"   type="float"/>
+            <column name="total" 				  type="bigint"/>  
+            <column name="fecha_registro" 		  type="date"/>
+            <column name="fecha_entrega" 		  type="date"/>
+            <column name="tipo_producto_id" 	  type="bigint"/>
+            <column name="cliente_id" 			  type="bigint"/>
+            <column name="logistica_terrestre_id" type="bigint"/>
+            <column name="logistica_maritima_id"  type="bigint"/>
+        </createTable>
+        
+        
+        <createTable tableName="logistica_maritima">
+            <column name="logistica_maritima_id" 	type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="barco_id" type="bigint"/>
+            <column name="puerto_id" type="bigint"/>
+        </createTable>
+        
+        <createTable tableName="logistica_terrestre">
+            <column name="logistica_terrestre_id" 	type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="camion_id" type="bigint"/>
+            <column name="bodega_id" type="bigint"/>
+        </createTable>
+        
+        
+        <createTable tableName="puerto">
+            <column name="puerto_id" 	type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="descripcion"  type="varchar(50)"/>
+            <column name="ubicacion" type="ENUM('NACIONAL','INTERNACIONAL')"/>
+        </createTable>
+        
+        <createTable tableName="tipo_producto">
+            <column name="tipo_producto_id" 	type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="nombre_tipo_producto" type="varchar(50)"/>
+        </createTable>
+        
+        
+        <addForeignKeyConstraint  baseColumnNames="tipo_producto_id"  
+	        baseTableName="logistica"  
+	        constraintName="fk_logistica_tipo_producto_id"
+	        onDelete="CASCADE"  
+	        onUpdate="RESTRICT"  
+	        referencedColumnNames="tipo_producto_id"   
+	        referencedTableName="tipo_producto"   
+	        validate="true"/>
+	        
+	        
+	   <addForeignKeyConstraint  baseColumnNames="cliente_id"  
+	        baseTableName="logistica"  
+	        constraintName="fk_logistica_cliente_id"
+	        onDelete="CASCADE"  
+	        onUpdate="RESTRICT"  
+	        referencedColumnNames="cliente_id"   
+	        referencedTableName="cliente"   
+	        validate="true"/>
+	        
+	  <addForeignKeyConstraint  baseColumnNames="logistica_terrestre_id"  
+	        baseTableName="logistica"  
+	        constraintName="fk_logistica_logistica_terrestre_id"
+	        onDelete="CASCADE"  
+	        onUpdate="RESTRICT"  
+	        referencedColumnNames="logistica_terrestre_id"   
+	        referencedTableName="logistica_terrestre"   
+	        validate="true"/>
+	        
+	 <addForeignKeyConstraint  baseColumnNames="logistica_maritima_id"  
+	        baseTableName="logistica"  
+	        constraintName="fk_logistica_logistica_maritima_id"
+	        onDelete="CASCADE"  
+	        onUpdate="RESTRICT"  
+	        referencedColumnNames="logistica_maritima_id"   
+	        referencedTableName="logistica_maritima"   
+	        validate="true"/>
+	 
+	<addForeignKeyConstraint  baseColumnNames="puerto_id"  
+	        baseTableName="logistica_maritima"  
+	        constraintName="fk_logistica_maritima_puerto_id"
+	        onDelete="CASCADE"  
+	        onUpdate="RESTRICT"  
+	        referencedColumnNames="puerto_id"   
+	        referencedTableName="puerto"   
+	        validate="true"/>
+	        
+	        
+	<addForeignKeyConstraint  baseColumnNames="barco_id"  
+	        baseTableName="logistica_maritima"  
+	        constraintName="fk_logistica_maritima_barco_id"
+	        onDelete="CASCADE"  
+	        onUpdate="RESTRICT"  
+	        referencedColumnNames="barco_id"   
+	        referencedTableName="barco"   
+	        validate="true"/>
+	        
+	        
+	<addForeignKeyConstraint  baseColumnNames="bodega_id"  
+	        baseTableName="logistica_terrestre"  
+	        constraintName="fk_logistica_terrestre_bodega_id"
+	        onDelete="CASCADE"  
+	        onUpdate="RESTRICT"  
+	        referencedColumnNames="bodega_id"   
+	        referencedTableName="bodega"   
+	        validate="true"/>
+	        
+	<addForeignKeyConstraint  baseColumnNames="camion_id"  
+	        baseTableName="logistica_terrestre"  
+	        constraintName="fk_logistica_terrestre_camion_id"
+	        onDelete="CASCADE"  
+	        onUpdate="RESTRICT"  
+	        referencedColumnNames="camion_id"   
+	        referencedTableName="camion"   
+	        validate="true"/>
+        
+        
+         
+    </changeSet>
+</databaseChangeLog>

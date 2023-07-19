@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.talycap.gestion.infrastructure.repository.mybatis.mappers.PuertoMapper">
+	<resultMap type="com.talycap.gestion.infrastructure.entitys.PuertoEntity" id="PuertoResult">
+  	
+  		<id		property 	= "puertoId" 	column = "puerto_id"/>
+ 		<result property 	="descripcion" 	column ="descripcion"/>
+ 		<result property 	="ubicacion" 	column ="ubicacion"/>
+  	</resultMap>
+</mapper>

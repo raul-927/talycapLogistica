@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.talycap.gestion.infrastructure.repository.mybatis.mappers.BodegaMapper">
+	<resultMap type="com.talycap.gestion.infrastructure.entitys.BodegaEntity" id="BodegaResult">
+  	
+  		<id		property 	= "bodegaId" 	column = "bodega_id"/>
+ 		<result property 	="nombreBodega"  column ="nombre_bodega"/>
+ 		
+  	</resultMap>
+</mapper>

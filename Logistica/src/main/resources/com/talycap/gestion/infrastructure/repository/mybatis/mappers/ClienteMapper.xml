@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.talycap.gestion.infrastructure.repository.mybatis.mappers.ClienteMapper">
+	<resultMap type="com.talycap.gestion.infrastructure.entitys.ClienteEntity" id="ClienteResult">
+  	
+  		<id		property 	="clienteId" 	column = "cliente_id"/>
+ 		<result property 	="nombre" 		column ="nombre"/>
+ 		<result property 	="apellido" 	column ="apellido"/>
+ 		<result property 	="documento" 	column ="documento"/>
+ 		
+  	</resultMap>
+</mapper>
