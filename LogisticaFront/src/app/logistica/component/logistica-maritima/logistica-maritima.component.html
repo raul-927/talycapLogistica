@@ -1,0 +1,38 @@
+<h3>Logistica Maritima</h3>
+<form class="form"
+   [formGroup] ="logisticaMaritimaFormGroup"
+   (ngSubmit)  ="insertLogisticaMaritima(logisticaMaritimaFormGroup.value)">
+
+
+   <div class="form-group">
+    <label for="barco">Seleccionar Barco:</label>
+    <select
+    [(ngModel)]="defaultValue"
+      class="form-control"
+      id="barco"
+      [formControl]="logisticaMaritimaFormGroup.controls['barco']">
+      <option class="dropdown-item" disabled [selected]="true" [ngValue]="defaultValue">{{defaultValue}}</option>
+      <option
+        *ngFor="let barco of barcoList"
+        [value]="barco.barcoId" >
+          {{barco.nombreBarco}}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="puerto">Seleccionar Puerto:</label>
+    <select
+    [(ngModel)]="defaultValue2"
+      class="form-control"
+      id="puerto"
+      [formControl]="logisticaMaritimaFormGroup.controls['puerto']">
+      <option class="dropdown-item" disabled [selected]="true" [ngValue]="defaultValue">{{defaultValue}}</option>
+      <option
+        *ngFor="let puerto of puertoList"
+        [value]="puerto.puertoId" >
+          {{puerto.descripcion}}
+      </option>
+    </select>
+  </div>
+</form>
