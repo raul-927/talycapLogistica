@@ -24,6 +24,8 @@ import { TablaPuertoComponent } from './puerto/components/tabla-puerto/tabla-pue
 import { LogisticaComponent } from './logistica/component/logistica/logistica.component';
 import { TablaLogisticaComponent } from './logistica/component/tabla-logistica/tabla-logistica.component';
 import { LoginComponent } from './login/components/login/login.component';
+import { LogisticaMaritimaComponent } from './logistica/component/logistica-maritima/logistica-maritima.component';
+import { LogisticaTerrestreComponent } from './logistica/component/logistica-terrestre/logistica-terrestre.component';
 
 const ENTRYCOMPONENTS = [
   BarcoComponent,
@@ -53,7 +55,9 @@ const ENTRYCOMPONENTS = [
     TablaPuertoComponent,
     LogisticaComponent,
     TablaLogisticaComponent,
-    LoginComponent
+    LoginComponent,
+    LogisticaMaritimaComponent,
+    LogisticaTerrestreComponent
   ],
   imports: [
     BrowserModule,

@@ -18,8 +18,8 @@ export class LogisticaService {
     return this.http.put<Logistica>(Url.URL_BASE+'/logisticas', logistica, {headers: this.headers()});
   }
 
-  public selectLogistica(logistica: Logistica): Observable<Logistica>{
-    return this.http.post<Logistica>(Url.URL_BASE+'/logisticas/select', logistica, {headers: this.headers()});
+  public selectLogistica(logistica: Logistica): Observable<Logistica[]>{
+    return this.http.post<Logistica[]>(Url.URL_BASE+'/logisticas/select', logistica, {headers: this.headers()});
   }
 
   public deleteLogistica(logistica: Logistica): Observable<any>{

@@ -3,19 +3,19 @@
    [formGroup] ="logisticaFormGroup"
    (ngSubmit)  ="insertPuerto(logisticaFormGroup.value)">
 
-  <div class    ="form-group">
-    <label for ="tipoProducto">Tipo de Producto:</label>
+   <div class="form-group">
+    <label for="cliente">Tipo de Producto:</label>
     <select
-      [(ngModel)]="defaultValue"
-        class="form-control"
-        id="tipoProducto"
-        [formControl]="logisticaFormGroup.controls['tipoProducto']">
-        <option class="dropdown-item" disabled [selected]="true" [ngValue]="defaultValue">{{defaultValue}}</option>
-        <option
-          *ngFor="let name of optionsEnumTipoLogistica; let i = index"
-          [ngValue]="name">
-            {{name}}
-        </option>
+    [(ngModel)]="defaultValue2"
+      class="form-control"
+      id="cliente"
+      [formControl]="logisticaFormGroup.controls['tipoProducto']">
+      <option class="dropdown-item" disabled [selected]="true" [ngValue]="defaultValue">{{defaultValue}}</option>
+      <option
+        *ngFor="let tipoProducto of tipProductoList"
+        [value]="tipoProducto.tipProductoId" >
+          {{tipoProducto.nombreTipoProducto}}
+      </option>
     </select>
   </div>
 
@@ -33,34 +33,15 @@
             [formControl]="logisticaFormGroup.controls['cantidadProducto']">
   </div>
 
-  <div class="form-group">
-    <label for="subTotal">Sub Total:</label>
-    <input  id   ="subTotal"
-            name ="subTotal"
-            [formControl]="logisticaFormGroup.controls['subTotal']">
-  </div>
-
-
-
-
-
-  <div class="form-group">
-    <label for="subTotal">Sub Total:</label>
-    <input  id   ="subTotal"
-            name ="subTotal"
-            [formControl]="logisticaFormGroup.controls['subTotal']">
-  </div>
-
-
-
   <div class    ="form-group">
-    <label for ="ubicacion">Tipo de Logistica:</label>
+    <label for ="tipoLogistica">Tipo de Logistica:</label>
     <select
       [(ngModel)]="defaultValue"
+      (ngModelChange)="modelChangeFn($event)"
         class="form-control"
-        id="ubicacion"
+        id="tipoLogistica"
         [formControl]="logisticaFormGroup.controls['tipoLogistica']">
-        <option class="dropdown-item" disabled [selected]="true" [ngValue]="defaultValue">{{defaultValue}}</option>
+        <option class="dropdown-item" disabled [selected]="true" [ngValue]="defaultValue" >{{defaultValue}}</option>
         <option
           *ngFor="let name of optionsEnumTipoLogistica; let i = index"
           [ngValue]="name">
@@ -68,6 +49,17 @@
         </option>
     </select>
   </div>
+
+  <div *ngIf="opcion == 'MARITIMA'">
+    <app-logistica-maritima></app-logistica-maritima>
+  </div>
+
+  <div *ngIf="opcion == 'TERRESTRE'">
+    <app-logistica-terrestre></app-logistica-terrestre>
+  </div>
+
+
+
 
 
   <div class="botonForm">
@@ -78,6 +70,4 @@
 
   </div>
 </form>
-<app-tabla-puerto
- [cambio]="cambio">
-</app-tabla-puerto>
+

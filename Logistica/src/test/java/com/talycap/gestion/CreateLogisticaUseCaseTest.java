@@ -21,6 +21,8 @@ import com.talycap.gestion.infrastructure.adapters.LogisticaAdapter;
 import com.talycap.gestion.domain.models.Logistica;
 import com.talycap.gestion.domain.models.LogisticaMaritima;
 import com.talycap.gestion.domain.models.LogisticaTerrestre;
+
+
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
 public class CreateLogisticaUseCaseTest {
