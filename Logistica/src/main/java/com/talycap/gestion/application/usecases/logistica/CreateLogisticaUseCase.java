@@ -24,7 +24,6 @@ public class CreateLogisticaUseCase implements CreateLogisticaIn {
 		int cantidadProducto = logistica.getCantidadProducto();
 		BigDecimal subTotal = new BigDecimal(0);
 		BigDecimal total = new BigDecimal(0);
-		BigDecimal aux = new BigDecimal(0);
 		if(logistica.getLogisticaMaritima()!=null) {
 			if(logistica.getCantidadProducto() >10) {
 				logistica.setPorcentajeDescuento(3.00F);
