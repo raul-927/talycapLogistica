@@ -59,7 +59,7 @@ public class CreateLogisticaUseCaseTest {
 	}
 	
 	@Test
-	void createLogisticaMaritimaMenorIgual10() {
+	void createLogisticaMaritimaIgual10() {
 		LogisticaOut lOut = new LogisticaAdapter(logisticaMapper, logisticaEntityMapper);
 		LogisticaMaritima lMaritima = new LogisticaMaritima();
 		LogisticaTerrestre lTerrestre = new LogisticaTerrestre();
@@ -77,7 +77,7 @@ public class CreateLogisticaUseCaseTest {
 	}
 	
 	@Test
-	void createLogisticaMaritimaMenorMayor10() {
+	void createLogisticaMaritimaMayor10() {
 		LogisticaOut lOut = new LogisticaAdapter(logisticaMapper, logisticaEntityMapper);
 		LogisticaMaritima lMaritima = new LogisticaMaritima();
 		LogisticaTerrestre lTerrestre = new LogisticaTerrestre();
@@ -113,7 +113,7 @@ public class CreateLogisticaUseCaseTest {
 	}
 	
 	@Test
-	void createLogisticaTerrestreMenorIgual10() {
+	void createLogisticaTerrestreIgual10() {
 		LogisticaOut lOut = new LogisticaAdapter(logisticaMapper, logisticaEntityMapper);
 		LogisticaTerrestre lTerrestre = new LogisticaTerrestre();
 		lTerrestre.setLogisticaTerrestreId(1);
@@ -129,7 +129,7 @@ public class CreateLogisticaUseCaseTest {
 	}
 	
 	@Test
-	void createLogisticaTerrestreMenorMayor10() {
+	void createLogisticaTerrestreMayor10() {
 		LogisticaOut lOut = new LogisticaAdapter(logisticaMapper, logisticaEntityMapper);
 		
 		LogisticaTerrestre lTerrestre = new LogisticaTerrestre();
