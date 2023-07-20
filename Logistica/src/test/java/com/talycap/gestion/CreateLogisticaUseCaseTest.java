@@ -94,5 +94,56 @@ public class CreateLogisticaUseCaseTest {
 		
 	}
 	
+	
+	
+	@Test
+	void createLogisticaTerrestreMenorDe10() {
+		LogisticaOut lOut = new LogisticaAdapter(logisticaMapper, logisticaEntityMapper);
+		LogisticaTerrestre lTerrestre = new LogisticaTerrestre();
+		lTerrestre.setLogisticaTerrestreId(1);
+		Logistica logistica = new Logistica();
+		logistica.setLogisticaTerrestre(lTerrestre);
+		logistica.setCantidadProducto(CANTIDAD_MENOR_DE_10);
+		logistica.setPrecioEnvio(PRECIO_ENVIO);
+		CreateLogisticaIn createLogistica = new CreateLogisticaUseCase(lOut);
+		Logistica logisticaResult = createLogistica.createLogistica(logistica);
+		assertEquals( new BigDecimal(72000), logisticaResult.getTotal() );
+		
+		
+	}
+	
+	@Test
+	void createLogisticaTerrestreMenorIgual10() {
+		LogisticaOut lOut = new LogisticaAdapter(logisticaMapper, logisticaEntityMapper);
+		LogisticaTerrestre lTerrestre = new LogisticaTerrestre();
+		lTerrestre.setLogisticaTerrestreId(1);
+		Logistica logistica = new Logistica();
+		logistica.setLogisticaTerrestre(lTerrestre);
+		logistica.setCantidadProducto(CANTIDAD_IGUAL_A_10);
+		logistica.setPrecioEnvio(PRECIO_ENVIO);
+		CreateLogisticaIn createLogistica = new CreateLogisticaUseCase(lOut);
+		Logistica logisticaResult = createLogistica.createLogistica(logistica);
+		assertEquals( new BigDecimal(80000), logisticaResult.getTotal() );
+		
+		
+	}
+	
+	@Test
+	void createLogisticaTerrestreMenorMayor10() {
+		LogisticaOut lOut = new LogisticaAdapter(logisticaMapper, logisticaEntityMapper);
+		
+		LogisticaTerrestre lTerrestre = new LogisticaTerrestre();
+		lTerrestre.setLogisticaTerrestreId(1);
+		Logistica logistica = new Logistica();
+		logistica.setLogisticaTerrestre(lTerrestre);
+		logistica.setCantidadProducto(CANTIDAD_MAYOR_A_10);
+		logistica.setPrecioEnvio(PRECIO_ENVIO);
+		CreateLogisticaIn createLogistica = new CreateLogisticaUseCase(lOut);
+		Logistica logisticaResult = createLogistica.createLogistica(logistica);
+		assertEquals( new BigDecimal(83600), logisticaResult.getTotal() );
+		
+		
+	}
+	
 
 }
