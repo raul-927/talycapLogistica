@@ -16,10 +16,16 @@ import com.talycap.gestion.infrastructure.rest.mappers.LogisticaEntityMapper;
 public class LogisticaAdapter implements LogisticaOut {
 	
 	@Autowired
-	private LogisticaMapper logisticaMapper;
+	private final LogisticaMapper logisticaMapper;
 	
 	@Autowired
-	private LogisticaEntityMapper logisticaEntityMapper;
+	private final LogisticaEntityMapper logisticaEntityMapper;
+	
+	
+	public LogisticaAdapter(LogisticaMapper logisticaMapper,LogisticaEntityMapper logisticaEntityMapper) {
+		this.logisticaMapper = logisticaMapper;
+		this.logisticaEntityMapper = logisticaEntityMapper;
+	}
 
 	@Override
 	public Logistica createLogistica(Logistica logistica) {
