@@ -3,7 +3,7 @@ import { Component, OnChanges, OnInit } from '@angular/core';
 import {FormsModule, FormBuilder, FormGroup, FormControl} from '@angular/forms';
 import { ClienteServiceService } from 'src/app/clientes/services/cliente-service.service';
 import { Cliente } from 'src/app/clientes/domain/Cliente';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-clientes',
@@ -24,7 +24,7 @@ export class ClientesComponent implements OnInit , OnChanges{
   apellido: FormControl         = new FormControl();
   documento: FormControl           = new FormControl();
 
-  constructor(private formBuilder: FormBuilder, private clienteService: ClienteServiceService){
+  constructor(private router: Router,private formBuilder: FormBuilder, private clienteService: ClienteServiceService){
     this.clienteFormGroup = formBuilder.group({
       nombre:    new FormControl(),
       apellido:   new FormControl(),
@@ -34,7 +34,12 @@ export class ClientesComponent implements OnInit , OnChanges{
   }
 
   ngOnInit(): void {
-    this.iniciarSelectorClientes();
+    if(!sessionStorage.getItem('token')){
+      this.router.navigate(['/']);
+    }else{
+      this.iniciarSelectorClientes();
+    }
+
   }
   ngOnChanges():void{
 

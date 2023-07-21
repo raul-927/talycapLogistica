@@ -4,6 +4,7 @@ import {FormsModule, FormBuilder, FormGroup, FormControl} from '@angular/forms';
 import { Puerto } from '../../domain/Puerto';
 import { PuertoService } from '../../services/puerto.service';
 import { UbicacionEnum } from '../../enumerador/UbicacionEnum';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-puerto',
   templateUrl: './puerto.component.html',
@@ -20,7 +21,7 @@ export class PuertoComponent  implements OnInit , OnChanges{
   descripcion: FormControl = new FormControl();
   ubicacion: FormControl = new FormControl();
 
-  constructor(private formBuilder: FormBuilder,private puertoService: PuertoService){
+  constructor(private router: Router, private formBuilder: FormBuilder,private puertoService: PuertoService){
     this.puertoFormGroup = formBuilder.group({
       descripcion:    new FormControl(),
       ubicacion:    new FormControl()
@@ -32,7 +33,12 @@ export class PuertoComponent  implements OnInit , OnChanges{
 
 
   ngOnInit(): void {
-    this.inicioSelectUbicacion();
+    if(!sessionStorage.getItem('token')){
+      this.router.navigate(['/']);
+    }else{
+      this.inicioSelectUbicacion();
+    }
+
   }
   ngOnChanges():void{
 

@@ -4,6 +4,7 @@ import {FormsModule, FormBuilder, FormGroup, FormControl} from '@angular/forms';
 import { BarcoService} from '../../services/barco.service';
 import { Barco } from '../../domain/Barco';
 import { AuthService } from 'src/app/login/services/auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-barco',
   templateUrl: './barco.component.html',
@@ -16,7 +17,7 @@ export class BarcoComponent implements OnInit , OnChanges{
   nroFlota: FormControl         = new FormControl();
   nombreBarco: FormControl         = new FormControl();
 
-  constructor(private formBuilder: FormBuilder,private barcoService: BarcoService, private authService: AuthService){
+  constructor(private router: Router, private formBuilder: FormBuilder,private barcoService: BarcoService, private authService: AuthService){
     this.barcoFormGroup = formBuilder.group({
       nroFlota:    new FormControl(),
       nombreBarco:   new FormControl()
@@ -24,7 +25,9 @@ export class BarcoComponent implements OnInit , OnChanges{
   }
 
   ngOnInit(): void {
-
+    if(!sessionStorage.getItem('token')){
+      this.router.navigate(['/']);
+    }
   }
   ngOnChanges():void{
 

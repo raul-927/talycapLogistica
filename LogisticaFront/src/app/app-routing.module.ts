@@ -10,7 +10,8 @@ import { PuertoComponent } from './puerto/components/puerto/puerto.component';
 import { LogisticaComponent } from './logistica/component/logistica/logistica.component';
 import { TipoProductoComponent } from './tipoproducto/components/tipo-producto/tipo-producto.component';
 const routes: Routes = [
-  { path: 'login', component: LoginComponent ,canActivate: [AuthGuardService]},
+ // { path: '', component: LoginComponent,canActivate:[AuthGuardService] },
+  {path: 'login', component: LoginComponent ,canActivate: [AuthGuardService]},
   {path: 'clientes', component: ClientesComponent, canActivate: [AuthGuardService]},
   {path: 'barcos', component: BarcoComponent, canActivate: [AuthGuardService]},
   {path: 'bodegas', component: BodegaComponent, canActivate: [AuthGuardService]},
@@ -20,7 +21,7 @@ const routes: Routes = [
   {path: 'tipoproducto',component: TipoProductoComponent, canActivate: [AuthGuardService]},
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   // otherwise redirect to home
-  { path: '**', redirectTo: '/login' }
+  { path: '**', redirectTo: '/' }
 ];
 
 @NgModule({

@@ -6,7 +6,7 @@ import { LogisticaService } from '../../services/logistica.service';
 import { TipoLogisticaEnum } from '../../enumerador/TipoLogisticaEnum';
 import { TipoProducto } from 'src/app/tipoproducto/domain/TipoProducto';
 import { TipoProductoService } from 'src/app/tipoproducto/services/tipo-producto.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-logistica',
   templateUrl: './logistica.component.html',
@@ -32,7 +32,8 @@ export class LogisticaComponent implements OnInit , OnChanges{
   cliente:             FormControl = new FormControl();
   tipoLogistica:       FormControl = new FormControl();
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private router: Router,
+    private formBuilder: FormBuilder,
     private logisticaService: LogisticaService,
     private tipoProductoService: TipoProductoService){
 
@@ -53,8 +54,13 @@ export class LogisticaComponent implements OnInit , OnChanges{
 
 
   ngOnInit(): void {
-    this.inicioSelectTipoLogistica();
-    this.iniciarSelectorTipoProducto();
+    if(!sessionStorage.getItem('token')){
+      this.router.navigate(['/']);
+    }else{
+      this.inicioSelectTipoLogistica();
+      this.iniciarSelectorTipoProducto();
+    }
+
   }
   ngOnChanges():void{
 

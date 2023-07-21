@@ -35,9 +35,17 @@ export class AuthService {
         }));
   }
 
+  isUserLoggedIn() {
+    let user = sessionStorage.getItem("username");
+    console.log(!(user === null));
+    return !(user === null);
+  }
+
+
   logout() {
     // remove user from local storage to log user out
     sessionStorage.removeItem('currentUser');
+    sessionStorage.removeItem('token');
     this.currentUserSubject.next(new Credential());
   }
 }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClientesComponent } from './clientes/components/clientes.component';
@@ -26,7 +26,8 @@ import { TablaLogisticaComponent } from './logistica/component/tabla-logistica/t
 import { LoginComponent } from './login/components/login/login.component';
 import { LogisticaMaritimaComponent } from './logistica/component/logistica-maritima/logistica-maritima.component';
 import { LogisticaTerrestreComponent } from './logistica/component/logistica-terrestre/logistica-terrestre.component';
-
+import { BasicAuthHtppInterceptorService } from './login/services/basic-auth-htpp-interceptor.service';
+import { AuthGuardService } from './login/services/auth-guard.service';
 const ENTRYCOMPONENTS = [
   BarcoComponent,
   BodegaComponent,
@@ -66,9 +67,11 @@ const ENTRYCOMPONENTS = [
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ ENTRYCOMPONENTS,
+    { provide: HTTP_INTERCEPTORS, useClass: BasicAuthHtppInterceptorService, multi: true },
+    AuthGuardService],
 
-  bootstrap: [AppComponent, ENTRYCOMPONENTS],
+  bootstrap: [AppComponent],
 
 })
 export class AppModule { }

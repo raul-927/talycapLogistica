@@ -4,7 +4,7 @@ import {FormsModule, FormBuilder, FormGroup, FormControl} from '@angular/forms';
 import { Camion } from '../../domain/Camion';
 import { CamionService } from '../../services/camion.service';
 import { AuthService } from 'src/app/login/services/auth.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-camion',
   templateUrl: './camion.component.html',
@@ -19,12 +19,17 @@ export class CamionComponent {
   marca: FormControl         = new FormControl();
   modelo: FormControl         = new FormControl();
 
-  constructor(private formBuilder: FormBuilder,private camionService: CamionService, private authService: AuthService){
+  constructor(private router:Router, private formBuilder: FormBuilder,private camionService: CamionService, private authService: AuthService){
     this.camionFormGroup = formBuilder.group({
       placa:    new FormControl(),
       marca:   new FormControl(),
       modelo:   new FormControl()
     });
+  }
+  ngOnInit(): void {
+    if(!sessionStorage.getItem('token')){
+      this.router.navigate(['/']);
+    }
   }
 
   public insertCamion(param: any):void{

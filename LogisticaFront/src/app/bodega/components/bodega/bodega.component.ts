@@ -3,7 +3,7 @@ import { Component, OnChanges, OnInit } from '@angular/core';
 import {FormsModule, FormBuilder, FormGroup, FormControl} from '@angular/forms';
 import { Bodega } from '../../domain/Bodega';
 import { BodegaService } from '../../services/bodega.service';
-
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/login/services/auth.service';
 
 @Component({
@@ -18,14 +18,16 @@ export class BodegaComponent implements OnInit , OnChanges{
   bodegaFormGroup: FormGroup;
   nombreBodega: FormControl = new FormControl();
 
-  constructor(private formBuilder: FormBuilder,private bodegaService: BodegaService, private authService: AuthService){
+  constructor(private router: Router, private formBuilder: FormBuilder,private bodegaService: BodegaService, private authService: AuthService){
     this.bodegaFormGroup = formBuilder.group({
       nombreBodega:    new FormControl()
     });
   }
 
   ngOnInit(): void {
-
+    if(!sessionStorage.getItem('token')){
+      this.router.navigate(['/']);
+    }
   }
   ngOnChanges():void{
 
