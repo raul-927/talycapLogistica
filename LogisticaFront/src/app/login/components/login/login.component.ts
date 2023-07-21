@@ -4,7 +4,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthService } from '../../services/auth.service';
-import { AuthenticationService } from '../../services/authentication.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -25,7 +24,6 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authServcice: AuthService,
-    private loginservice: AuthenticationService,
     private componentFactoryResolver: ComponentFactoryResolver
   ) {
     this.loginForm = formBuilder.group({

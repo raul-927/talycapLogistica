@@ -26,7 +26,6 @@ import { TablaLogisticaComponent } from './logistica/component/tabla-logistica/t
 import { LoginComponent } from './login/components/login/login.component';
 import { LogisticaMaritimaComponent } from './logistica/component/logistica-maritima/logistica-maritima.component';
 import { LogisticaTerrestreComponent } from './logistica/component/logistica-terrestre/logistica-terrestre.component';
-import { BasicAuthHtppInterceptorService } from './login/services/basic-auth-htpp-interceptor.service';
 import { AuthGuardService } from './login/services/auth-guard.service';
 const ENTRYCOMPONENTS = [
   BarcoComponent,
@@ -68,7 +67,6 @@ const ENTRYCOMPONENTS = [
     AppRoutingModule
   ],
   providers: [ ENTRYCOMPONENTS,
-    { provide: HTTP_INTERCEPTORS, useClass: BasicAuthHtppInterceptorService, multi: true },
     AuthGuardService],
 
   bootstrap: [AppComponent],
