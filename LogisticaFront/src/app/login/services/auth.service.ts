@@ -36,8 +36,7 @@ export class AuthService {
   }
 
   isUserLoggedIn() {
-    let user = sessionStorage.getItem("username");
-    console.log(!(user === null));
+    let user = sessionStorage.getItem("currentUser");
     return !(user === null);
   }
 

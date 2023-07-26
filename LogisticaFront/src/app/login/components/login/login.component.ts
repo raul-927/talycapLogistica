@@ -1,5 +1,5 @@
 
-﻿import { Component,ComponentFactoryResolver, ViewChild,  OnInit, AfterViewInit, ChangeDetectorRef, OnChanges } from '@angular/core';
+﻿import { Component,ComponentFactoryResolver, ViewChild, EventEmitter, OnInit, AfterViewInit, ChangeDetectorRef, OnChanges, Output } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
@@ -10,6 +10,8 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  @Output() loged?:boolean;
   loginForm: FormGroup;
   username?: FormControl;
   password?: FormControl;
@@ -41,6 +43,7 @@ ngAfterViewInit(){
 }
 
 ngOnCanges(){
+  this.loged = this.authServcice.isUserLoggedIn();
     if (this.authServcice.currentUserValue) {
         this.router.navigate(['/']);
     }

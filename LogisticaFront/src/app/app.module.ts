@@ -27,10 +27,15 @@ import { LoginComponent } from './login/components/login/login.component';
 import { LogisticaMaritimaComponent } from './logistica/component/logistica-maritima/logistica-maritima.component';
 import { LogisticaTerrestreComponent } from './logistica/component/logistica-terrestre/logistica-terrestre.component';
 import { AuthGuardService } from './login/services/auth-guard.service';
+import { ContainerComponent } from './templates/container/container.component';
 const ENTRYCOMPONENTS = [
   BarcoComponent,
   BodegaComponent,
-  ClientesComponent
+  ClientesComponent,
+  CamionComponent,
+  PuertoComponent,
+  LoginComponent
+
 ];
 
 @NgModule({
@@ -57,7 +62,8 @@ const ENTRYCOMPONENTS = [
     TablaLogisticaComponent,
     LoginComponent,
     LogisticaMaritimaComponent,
-    LogisticaTerrestreComponent
+    LogisticaTerrestreComponent,
+    ContainerComponent
   ],
   imports: [
     BrowserModule,
