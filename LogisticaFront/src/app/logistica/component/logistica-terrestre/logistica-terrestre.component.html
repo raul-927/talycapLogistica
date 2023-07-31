@@ -1,1 +1,39 @@
-<p>logistica-terrestre works!</p>
+<h3>Logistica Terrestre</h3>
+<form class="form"
+   [formGroup] ="logisticaTerrestreFormGroup">
+
+
+   <div class="form-group">
+    <label for="camion">Seleccionar Camion:</label>
+    <select
+    [(ngModel)]="defaultValue"
+      class="form-control"
+      id="camion"
+      [formControl]="logisticaTerrestreFormGroup.controls['camion']">
+      <option class="dropdown-item" disabled [selected]="true" [ngValue]="defaultValue">{{defaultValue}}</option>
+      <option
+        *ngFor="let camion of camionList"
+        [value]="camion.camionId" >
+          {{camion.placa}}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="bodega">Seleccionar Bodega:</label>
+    <select
+    [(ngModel)]="defaultValue2"
+      class="form-control"
+      id="bodega"
+      (change)="(enviarFormGroup())"
+      [formControl]="logisticaTerrestreFormGroup.controls['bodega']">
+      <option class="dropdown-item"  [selected]="true" [ngValue]="defaultValue">{{defaultValue}}</option>
+      <option
+
+        *ngFor="let bodega of bodegaList"
+        [value]="bodega.bodegaId" >
+          {{bodega.nombreBodega}}
+      </option>
+    </select>
+  </div>
+</form>
