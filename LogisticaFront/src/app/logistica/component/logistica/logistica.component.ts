@@ -118,6 +118,16 @@ export class LogisticaComponent implements OnInit , OnChanges{
   public insertLogistica(param: any):void{
 
     let logistica: Logistica = new Logistica();
+    switch (this.opcion){
+      case 'MARITIMA':{
+        logistica.tipoLogistica = TipoLogisticaEnum.MARITIMA;
+        break;
+      }
+      case 'TERRESTRE':{
+        logistica.tipoLogistica = TipoLogisticaEnum.TERRESTRE;
+        break;
+      }
+    }
     logistica!.fechaEntrega = param.fechaEntrega;
     logistica!.tipoProducto!.tipoProductoId = param.tipoProducto;
     logistica.precioEnvio = param.precioEnvio;

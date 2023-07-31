@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import com.talycap.gestion.domain.enumerador.TipoLogisticaEnum;
 import com.talycap.gestion.domain.models.TipoProducto;
 
 public class LogisticaEntity implements Serializable {
@@ -22,6 +23,7 @@ public class LogisticaEntity implements Serializable {
 	private ClienteEntity			 cliente;
 	private LogisticaTerrestreEntity logisticaTerrestre;
 	private LogisticaMaritimaEntity	 logisticaMaritima;
+	private TipoLogisticaEnum		 tipoLogistica;
 	
 	public int getLogisticaId() {
 		return logisticaId;
@@ -94,6 +96,12 @@ public class LogisticaEntity implements Serializable {
 	}
 	public void setTotal(BigDecimal total) {
 		this.total = total;
+	}
+	public TipoLogisticaEnum getTipoLogistica() {
+		return tipoLogistica;
+	}
+	public void setTipoLogistica(TipoLogisticaEnum tipoLogistica) {
+		this.tipoLogistica = tipoLogistica;
 	}
 	
 }

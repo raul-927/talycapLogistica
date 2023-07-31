@@ -3,6 +3,8 @@ package com.talycap.gestion.domain.models;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import com.talycap.gestion.domain.enumerador.TipoLogisticaEnum;
+
 public class Logistica {
 	private int						logisticaId;
 	private TipoProducto 			tipoProducto;
@@ -16,6 +18,8 @@ public class Logistica {
 	private Cliente					cliente;
 	private LogisticaTerrestre		logisticaTerrestre;
 	private LogisticaMaritima		logisticaMaritima;
+	
+	private TipoLogisticaEnum		tipoLogistica;
 	
 	
 	public int getLogisticaId() {
@@ -89,5 +93,11 @@ public class Logistica {
 	}
 	public void setTotal(BigDecimal total) {
 		this.total = total;
+	}
+	public TipoLogisticaEnum getTipoLogistica() {
+		return tipoLogistica;
+	}
+	public void setTipoLogistica(TipoLogisticaEnum tipoLogistica) {
+		this.tipoLogistica = tipoLogistica;
 	}
 }

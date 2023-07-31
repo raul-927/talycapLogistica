@@ -12,6 +12,7 @@
  		<result property 	="total" 				column ="total"/>
  		<result property 	="fechaRegistro" 		column ="fecha_registro"/>
  		<result property 	="fechaEntrega" 		column ="fecha_entrega"/>
+ 		<result property	="tipoLogistica"		column ="tipo_logistica"/>
  		
  		<association property ="tipoProducto" 
 			resultMap="com.talycap.gestion.infrastructure.repository.mybatis.mappers.TipoProductoMapper.TipoProductoResult"/>

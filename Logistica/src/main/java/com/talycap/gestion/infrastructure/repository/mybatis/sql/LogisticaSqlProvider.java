@@ -3,6 +3,8 @@ package com.talycap.gestion.infrastructure.repository.mybatis.sql;
 import java.math.BigDecimal;
 
 import org.apache.ibatis.jdbc.SQL;
+
+import com.talycap.gestion.domain.enumerador.TipoLogisticaEnum;
 import com.talycap.gestion.infrastructure.entitys.LogisticaEntity;
 
 public class LogisticaSqlProvider {
@@ -27,6 +29,9 @@ public class LogisticaSqlProvider {
 			}
 			if(logistica.getFechaRegistro()!=null) {
 				VALUES("fecha_registro", "'".concat(logistica.getFechaRegistro().toString()).concat("'"));
+			}
+			if(logistica.getTipoLogistica()!=null) {
+				VALUES("tipo_logistica","'".concat(logistica.getTipoLogistica().name()).concat("'"));
 			}
 			VALUES("precio_envio", "'".concat(String.valueOf(logistica.getPrecioEnvio())).concat("'"));
 			VALUES("cantidad_producto","'".concat(String.valueOf(logistica.getCantidadProducto())).concat("'"));
@@ -89,10 +94,10 @@ public class LogisticaSqlProvider {
 	
 	public String select(LogisticaEntity logistica) {
 		SQL sql = new SQL() {{
-			SELECT("l.logistica_id, l.precio_envio, l.cantidad_producto, l.sub_total, l.porcentaje_descuento, l.total, l.fecha_registro, l.fecha_entrega");
+			SELECT("l.logistica_id, l.precio_envio, l.cantidad_producto, l.sub_total, l.porcentaje_descuento, l.total, l.fecha_registro, l.fecha_entrega, l.tipo_logistica");
 			SELECT("t.tipo_producto_id, t.nombre_tipo_producto");
 			SELECT("cli.cliente_id, cli.nombre, cli.apellido, cli.documento");
-			if(logistica!=null && logistica.getLogisticaMaritima()!=null && logistica.getLogisticaMaritima().getLogisticaMaritimaId() > 0) {
+			if(logistica.getTipoLogistica()!= null && logistica.getTipoLogistica() == TipoLogisticaEnum.MARITIMA) {
 				SELECT("lm.logistica_maritima_id, lm.barco_id, lm.puerto_id");
 				SELECT("b.barco_id, b.nro_flota, b.nombre_barco");
 				SELECT("p.puerto_id, p.descripcion, p.ubicacion");
@@ -102,7 +107,7 @@ public class LogisticaSqlProvider {
 				WHERE("lm.barco_id = b.barco_id");
 				WHERE("lm.puerto_id = p.puerto_id");
 			}else
-			if(logistica!=null && logistica.getLogisticaTerrestre()!=null && logistica.getLogisticaTerrestre().getLogisticaTerrestreId() > 0) {
+				if(logistica.getTipoLogistica()!= null && logistica.getTipoLogistica() == TipoLogisticaEnum.TERRESTRE) {
 				SELECT("lt.logistica_terrestre_id");
 				SELECT("c.camion_id, c.placa, c.marca, c.modelo");
 				SELECT("b.bodega_id, b.nombre_bodega");
@@ -139,6 +144,9 @@ public class LogisticaSqlProvider {
 					}
 					if(logistica.getFechaRegistro()!=null) {
 						WHERE("l.fecha_registro LIKE " + "'%".concat(logistica.getFechaRegistro().toString()).concat("%'"));
+					}
+					if(logistica.getTipoLogistica()!= null) {
+						WHERE("tipo_logistica = "+"'".concat(logistica.getTipoLogistica().name()).concat("'"));
 					}
 				}
 			}

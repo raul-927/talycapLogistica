@@ -24,7 +24,8 @@ public interface LogisticaEntityMapper {
         @Mapping(source = "fechaEntrega", 		target = "fechaEntrega"),
         @Mapping(source = "cliente", 			target = "cliente"),
         @Mapping(source = "logisticaTerrestre", target = "logisticaTerrestre"),
-        @Mapping(source = "logisticaMaritima", 	target = "logisticaMaritima")
+        @Mapping(source = "logisticaMaritima", 	target = "logisticaMaritima"),
+        @Mapping(source = "tipoLogistica", 		target = "tipoLogistica")
 		})
 	Logistica toLogistica(LogisticaEntity logisticaEntity);
 

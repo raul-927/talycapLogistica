@@ -59,6 +59,7 @@
             <column name="cliente_id" 			  type="bigint"/>
             <column name="logistica_terrestre_id" type="bigint"/>
             <column name="logistica_maritima_id"  type="bigint"/>
+            <column name="tipo_logistica" 		  type="ENUM('MARITIMA','TERRESTRE')"/>
         </createTable>
         
         

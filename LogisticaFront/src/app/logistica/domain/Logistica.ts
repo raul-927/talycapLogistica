@@ -2,6 +2,7 @@ import { Cliente } from "src/app/clientes/domain/Cliente";
 import { TipoProducto } from "src/app/tipoproducto/domain/TipoProducto";
 import { LogisticaMaritima } from "./LogisticaMaritima";
 import { LogisticaTerrestre } from "./LogisticaTerrestre";
+import { TipoLogisticaEnum } from "../enumerador/TipoLogisticaEnum";
 
 export class Logistica{
   logisticaId?:number;
@@ -16,4 +17,5 @@ export class Logistica{
   cliente?: Cliente = new Cliente();
   logisticaMaritima?:LogisticaMaritima;
   logisticaTerrestre?:LogisticaTerrestre;
+  tipoLogistica?: TipoLogisticaEnum;
 }
