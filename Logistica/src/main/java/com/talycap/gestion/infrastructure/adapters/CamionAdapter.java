@@ -15,10 +15,16 @@ import com.talycap.gestion.infrastructure.rest.mappers.CamionEntityMapper;
 public class CamionAdapter implements CamionOut {
 	
 	@Autowired
-	private CamionMapper camionMapper;
+	private final CamionMapper camionMapper;
 	
 	@Autowired
-	private CamionEntityMapper camionEntityMapper;
+	private final CamionEntityMapper camionEntityMapper;
+	
+	
+	public CamionAdapter(CamionMapper camionMapper, CamionEntityMapper camionEntityMapper) {
+		this.camionMapper = camionMapper;
+		this.camionEntityMapper = camionEntityMapper;
+	}
 
 	@Override
 	public Camion createCamion(Camion camion) {

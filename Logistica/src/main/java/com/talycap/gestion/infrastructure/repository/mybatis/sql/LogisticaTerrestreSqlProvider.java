@@ -7,13 +7,16 @@ public class LogisticaTerrestreSqlProvider {
 	
 	public String insert(LogisticaTerrestreEntity logisticaTerrestre) {
 		String query = new SQL() {{
-			INSERT_INTO("logistica_terrestre");
-			if(logisticaTerrestre.getBodega()!=null) {
-				VALUES("bodega_id", "'".concat(String.valueOf(logisticaTerrestre.getBodega().getBodegaId())).concat("'"));
+			if(logisticaTerrestre != null) {
+				INSERT_INTO("logistica_terrestre");
+				if(logisticaTerrestre.getBodega()!=null) {
+					VALUES("bodega_id", "'".concat(String.valueOf(logisticaTerrestre.getBodega().getBodegaId())).concat("'"));
+				}
+				if(logisticaTerrestre.getCamion()!=null) {
+					VALUES("camion_id", "'".concat(String.valueOf(logisticaTerrestre.getCamion().getCamionId())).concat("'"));
+				}
 			}
-			if(logisticaTerrestre.getCamion()!=null) {
-				VALUES("camion_id", "'".concat(String.valueOf(logisticaTerrestre.getCamion().getCamionId())).concat("'"));
-			}
+			
 		}}.toString();
 		System.out.println(query);
 		return query;

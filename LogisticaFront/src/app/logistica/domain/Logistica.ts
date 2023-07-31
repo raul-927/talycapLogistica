@@ -5,7 +5,7 @@ import { LogisticaTerrestre } from "./LogisticaTerrestre";
 
 export class Logistica{
   logisticaId?:number;
-  tipoProducto?: TipoProducto;
+  tipoProducto?: TipoProducto = new TipoProducto();
   precioEnvio?: number;
   cantidadProducto?:number;
   subTotal?:number;
@@ -13,7 +13,7 @@ export class Logistica{
   total?:number;
   fechaRegistro?:Date;
   fechaEntrega?:Date;
-  cliente?: Cliente;
-  logisticaMaraitima?:LogisticaMaritima;
+  cliente?: Cliente = new Cliente();
+  logisticaMaritima?:LogisticaMaritima;
   logisticaTerrestre?:LogisticaTerrestre;
 }

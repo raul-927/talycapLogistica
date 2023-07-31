@@ -25,10 +25,8 @@ export class ContainerComponent implements OnInit , AfterViewInit {
     else{
       this.login = false;
     }
-    console.log('this.login: '+this.login);
     this.loading = false;
     this.authService.isUserLoggedIn();
-    console.log('this.authService.isUserLoggedIn(): '+this.authService.isUserLoggedIn());
   }
 
   ngOnChanges():void{
@@ -38,7 +36,6 @@ export class ContainerComponent implements OnInit , AfterViewInit {
     else{
       this.login = false;
     }
-    console.log('this.login: '+this.login);
   }
 
   ngAfterViewInit(){

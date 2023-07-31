@@ -20,7 +20,6 @@ export class BodyComponent implements OnInit , AfterViewInit{
     this.login = this.authService.isUserLoggedIn();
     this.loading = false;
     this.authService.isUserLoggedIn();
-    console.log('this.authService.isUserLoggedIn(): '+this.authService.isUserLoggedIn());
   }
 
   ngOnChanges():void{

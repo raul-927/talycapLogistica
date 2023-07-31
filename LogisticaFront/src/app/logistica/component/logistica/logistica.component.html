@@ -1,19 +1,28 @@
 <h3>Crear Nueva Logistica</h3>
 <form class="form"
    [formGroup] ="logisticaFormGroup"
-   (ngSubmit)  ="insertPuerto(logisticaFormGroup.value)">
+   (ngSubmit)  ="insertLogistica(logisticaFormGroup.value)">
 
    <div class="form-group">
-    <label for="cliente">Tipo de Producto:</label>
+    <label for="precioEnvio">Fecha de Entrega:</label>
+    <input  id   ="precioEnvio"
+            name ="precioEnvio"
+    type="datetime-local"
+            [formControl]="logisticaFormGroup.controls['fechaEntrega']">
+  </div>
+
+
+   <div class="form-group">
+    <label for="tipoProducto">Tipo de Producto:</label>
     <select
-    [(ngModel)]="defaultValue2"
+    [(ngModel)]="defaultValue"
       class="form-control"
-      id="cliente"
+      id="tipoProducto"
       [formControl]="logisticaFormGroup.controls['tipoProducto']">
       <option class="dropdown-item" disabled [selected]="true" [ngValue]="defaultValue">{{defaultValue}}</option>
       <option
         *ngFor="let tipoProducto of tipProductoList"
-        [value]="tipoProducto.tipProductoId" >
+        [value]="tipoProducto.tipoProductoId" >
           {{tipoProducto.nombreTipoProducto}}
       </option>
     </select>
@@ -33,15 +42,32 @@
             [formControl]="logisticaFormGroup.controls['cantidadProducto']">
   </div>
 
+
+  <div class="form-group">
+    <label for="cliente">Cliente:</label>
+    <select
+    [(ngModel)]="defaultValue2"
+      class="form-control"
+      id="cliente"
+      [formControl]="logisticaFormGroup.controls['cliente']">
+      <option class="dropdown-item" disabled [selected]="true" [ngValue]="defaultValue2">{{defaultValue2}}</option>
+      <option
+        *ngFor="let cliente of clientes"
+        [value]="cliente.clienteId" >
+          {{cliente.nombre}}
+      </option>
+    </select>
+  </div>
+
   <div class    ="form-group">
     <label for ="tipoLogistica">Tipo de Logistica:</label>
     <select
-      [(ngModel)]="defaultValue"
+      [(ngModel)]="defaultValue3"
       (ngModelChange)="modelChangeFn($event)"
         class="form-control"
         id="tipoLogistica"
         [formControl]="logisticaFormGroup.controls['tipoLogistica']">
-        <option class="dropdown-item" disabled [selected]="true" [ngValue]="defaultValue" >{{defaultValue}}</option>
+        <option class="dropdown-item" disabled [selected]="true" [ngValue]="defaultValue3" >{{defaultValue3}}</option>
         <option
           *ngFor="let name of optionsEnumTipoLogistica; let i = index"
           [ngValue]="name">
@@ -51,11 +77,11 @@
   </div>
 
   <div *ngIf="opcion == 'MARITIMA'">
-    <app-logistica-maritima></app-logistica-maritima>
+    <app-logistica-maritima (logisticaMaritimaFormGroupEmmiter)="getLogisticaMaritima($event)"></app-logistica-maritima>
   </div>
 
   <div *ngIf="opcion == 'TERRESTRE'">
-    <app-logistica-terrestre></app-logistica-terrestre>
+    <app-logistica-terrestre (logisticaTerrestreFormGroupEmmiter)="getLogisticaTerrestre($event)"></app-logistica-terrestre>
   </div>
 
 

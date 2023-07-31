@@ -1,6 +1,7 @@
 package com.talycap.gestion.application.usecases.logistica;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Component;
 
@@ -20,6 +21,9 @@ public class CreateLogisticaUseCase implements CreateLogisticaIn {
 
 	@Override
 	public Logistica createLogistica(Logistica logistica) {
+		
+		LocalDateTime fechaRegistro = LocalDateTime.now();
+		logistica.setFechaRegistro(fechaRegistro);
 		BigDecimal precioEnvio = logistica.getPrecioEnvio();
 		int cantidadProducto = logistica.getCantidadProducto();
 		BigDecimal subTotal = new BigDecimal(0);
@@ -48,6 +52,8 @@ public class CreateLogisticaUseCase implements CreateLogisticaIn {
 				total = subTotal;
 			}
 			
+		}else {
+			logistica.setPorcentajeDescuento(0.00F);
 		}
 		logistica.setSubTotal(subTotal);
 		logistica.setTotal(total);
