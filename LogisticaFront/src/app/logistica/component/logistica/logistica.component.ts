@@ -94,10 +94,6 @@ export class LogisticaComponent implements OnInit , OnChanges{
 
   }
 
-  public getPrueba(e:any):void{
-    console.log('LLEGOOO: '+e);
-  }
-
   public getLogisticaMaritima(e:any){
     this.puerto.puertoId = e.get('puerto').value;
     this.barco.barcoId = e.get('barco').value;
@@ -113,7 +109,6 @@ export class LogisticaComponent implements OnInit , OnChanges{
     this.logisticaTerrestre = new LogisticaTerrestre();
     this.logisticaTerrestre.camion = this.camion;
     this.logisticaTerrestre.bodega = this.bodega;
-    console.log('BODEGA: '+this.logisticaTerrestre.bodega.bodegaId);
   }
 
   public modelChangeFn(abc: string) {
@@ -128,21 +123,16 @@ export class LogisticaComponent implements OnInit , OnChanges{
     logistica.precioEnvio = param.precioEnvio;
     logistica.cantidadProducto = param.cantidadProducto;
     logistica!.cliente!.clienteId = param.cliente;
-    console.log('LOGISTICA MARITIMA: '+JSON.stringify(this.logisticaMaritima));
-    console.log('LOGISTICA TERRESTRE: '+JSON.stringify(this.logisticaTerrestre));
     if(this.logisticaMaritima!== undefined){
-      console.log('MARITIMA OK')
       logistica.logisticaMaritima = this.logisticaMaritima;
       logistica.logisticaTerrestre = undefined;
     }
     else if(this.logisticaTerrestre!== undefined){
-      console.log('TERRESTRE OK');
       logistica.logisticaTerrestre = this.logisticaTerrestre;
       logistica.logisticaMaritima = undefined;
     }
 
     this.logisticaService.insertLogistica(logistica).subscribe(result =>{
-      console.log('LOGISTICA: '+JSON.stringify(logistica));
       this.cambio = true;
       this.logistica = result;
     })

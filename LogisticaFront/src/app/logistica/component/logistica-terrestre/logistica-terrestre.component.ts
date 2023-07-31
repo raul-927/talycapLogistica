@@ -45,7 +45,6 @@ export class LogisticaTerrestreComponent  implements OnInit , OnChanges{
 
   }
   enviarFormGroup(){
-    console.log('ENVIO');
     this.logisticaTerrestreFormGroupEmmiter.emit(this.logisticaTerrestreFormGroup);
   }
 
