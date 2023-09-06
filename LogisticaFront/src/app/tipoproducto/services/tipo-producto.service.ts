@@ -13,6 +13,7 @@ export class TipoProductoService {
   constructor(private http: HttpClient) { }
 
   public insertTipoProducto(tipoProducto:TipoProducto): Observable<TipoProducto>{
+    console.log('TIPO PRODUCTO: '+JSON.stringify(tipoProducto));
     return this.http.post<TipoProducto>(Url.URL_BASE+'/tiposProductos', tipoProducto, {headers: HeadersService.headers()});
   }
 

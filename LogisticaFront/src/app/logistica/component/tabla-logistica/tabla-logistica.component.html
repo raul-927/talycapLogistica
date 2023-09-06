@@ -1,9 +1,17 @@
 <table class="table table-hover table-bordered well well-sm">
-  <caption><h1>Puertos</h1></caption>
+  <caption><h1>Logisticas</h1></caption>
     <thead>
-      <td>id</td>
-      <td>Descripcion</td>
-      <td>Ubicacion</td>
+      <td>ID</td>
+      <td>Fecha de registro</td>
+      <td>Fecha de entrega</td>
+      <td>Cliente</td>
+      <td>Producto</td>
+      <td>Precio envío</td>
+      <td>Cantidad</td>
+      <td>Sub total</td>
+      <td>Porcentaje descuento</td>
+      <td>Total</td>
+
 
       <td>Editar</td>
       <td>Guardar</td>
@@ -13,29 +21,83 @@
     <tr *ngFor="let item of logisticas, let i=index">
 
       <td>
-        <h4>{{item.puertoId}}</h4>
+        <h4>{{item.logisticaId}}</h4>
       </td>
 
       <td>
         <input
+            type="datetime-local"
             class="form-control"
-            id   ="descripcion_{{item.puertoId}}"
-            name ="descripcion_{{item.puertoId}}"
-            [value]="item.descripcion"
+            id   ="fecha_registro_{{item.logisticaId}}"
+            name ="fecha_registro_{{item.logisticaId}}"
+            [value]="item.fechaRegistro"
+            disabled [selected]="true">
+      </td>
+
+      <td>
+        <input
+            type="datetime-local"
+            class="form-control"
+            id   ="fecha_entrega_{{item.logisticaId}}"
+            name ="fecha_entrega_{{item.logisticaId}}"
+            [value]="item.fechaEntrega"
             disabled [selected]="true">
       </td>
 
       <td>
         <select
           class="form-control"
-          id   ="ubicacion_{{item.puertoId}}"
-          name ="ubicacion_{{item.puertoId}}"
+          id   ="cliente_{{item.logisticaId}}"
+          name ="cliente_{{item.logisticaId}}"
           [disabled]="isClicked">
-          <option class="dropdown-item" disabled [selected]="true" [ngValue]="name">{{item.ubicacion}}</option>
-          <option *ngFor="let name of optionsEnumUbicacion; let i = index" value = "{{name}}"[value]="name">
-              {{name}}
+          <option class="dropdown-item" disabled [selected]="true" [ngValue]="name">{{item.cliente.nombre}}</option>
+          <option *ngFor="let cliente of clientes; let i = index" value = "{{cliente.clienteId}}"[value]="cliente.clienteId">
+              {{cliente.nombre}}
           </option>
         </select>
+      </td>
+
+      <td>
+        <select
+          class="form-control"
+          id   ="tipo_producto_{{item.logisticaId}}"
+          name ="tipo_producto_{{item.logisticaId}}"
+          [disabled]="isClicked">
+          <option class="dropdown-item" disabled [selected]="true" [ngValue]="name">{{item.cliente.nombre}}</option>
+          <option *ngFor="let tipoProducto of tipoProductos; let i = index" value = "{{tipoProducto.tipoProductoId}}"[value]="tipoProducto.tipoProductoId">
+              {{tipoProducto.nombreTipoProducto}}
+          </option>
+        </select>
+      </td>
+
+      <td>
+        <input
+            class="form-control"
+            id   ="precioEnvio_{{item.logisticaId}}"
+            name ="precioEnvio_{{item.logisticaId}}"
+            [value]="item.precioEnvio"
+            disabled [selected]="true">
+      </td>
+
+      <td>
+        <input
+            class="form-control"
+            id   ="cantidad_{{item.logisticaId}}"
+            name ="cantidad_{{item.logisticaId}}"
+            [value]="item.cantidadProducto"
+            disabled [selected]="true">
+      </td>
+
+      <td>
+        {{item.subTotal}}
+      </td>
+
+      <td>
+        {{item.porcentajeDescuento}}
+      </td>
+
+      <td>
+        {{item.total}}
       </td>
 
       <td>

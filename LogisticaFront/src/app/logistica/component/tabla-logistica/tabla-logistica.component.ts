@@ -37,6 +37,7 @@ export class TablaLogisticaComponent  implements OnInit, OnChanges{
   public inicializoTabla():void{
     this.logisticaService.selectLogistica(new Logistica()).subscribe(result =>{
       this.logisticas = result;
+      console.log('LOGISTICAS: '+JSON.stringify(this.logisticas));
     });
   }
 

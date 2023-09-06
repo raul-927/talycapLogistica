@@ -13,7 +13,8 @@ export class HeadersService{
     }
     headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('Authorization',token!);
-
+    console.log('TOKEN: '+JSON.stringify(token));
+    console.log('CREDENTIALS: '+JSON.stringify(credentials));
     return headers;
   }
 

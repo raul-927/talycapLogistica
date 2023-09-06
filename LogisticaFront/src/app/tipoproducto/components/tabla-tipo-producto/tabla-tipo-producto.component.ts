@@ -35,6 +35,7 @@ export class TablaTipoProductoComponent {
 
   public inicializoTabla():void{
     this.tipoProductoService.selectTipoProducto(new TipoProducto()).subscribe(result =>{
+      console.log('TIPOS PRODUCTOS: '+result);
       this.tipoProductos = result;
     });
   }
